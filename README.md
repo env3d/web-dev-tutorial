@@ -34,7 +34,7 @@ writers, etc.).  Imagine if the pros email their code to each other, or put the 
 on a shared drive like dropbox or google drive.  How can we gaurantee that people are not 
 changing other people's code accidentially?
 
-Version control systems (aka (revision control system)[https://en.wikipedia.org/wiki/Revision_Control_System]) 
+Version control systems (aka [revision control system](https://en.wikipedia.org/wiki/Revision_Control_System) )
 have been around for about 40 years and is designed to solve the exact issues mentioned
 above.  Arguably, the most popular version control system today is (git)[https://git-scm.com/].
 
