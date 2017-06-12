@@ -138,9 +138,8 @@ in any directory
 
 # javascript packaging
 
-Ok, now we are ready for the main event.  Remember the problem with lots of 
-<script> tags that I mentioned in the beginning?  This is where we fix that 
-problem.
+Ok, now we are ready for the main event.  Remember the problem with lots of <script> tags 
+that I mentioned in the beginning?  This is where we fix that problem.
 
 Follow these steps to get started:
 
