@@ -136,8 +136,160 @@ I can run it everywhere.
 * You can now use the lite-server command in a shell to start the server
 in any directory
 
-== javascript packaging ==
+# javascript packaging
 
-== sass/css ==
+Ok, now we are ready for the main event.  Remember the problem with lots of 
+<script> tags that I mentioned in the beginning?  This is where we fix that 
+problem.
 
+Follow these steps to get started:
+
+* Create an new directory to hold your project, call it anything you want.  
+I'll call it js-test.
+* Change the directory to js-test and run 'npm init -y' to make this an npm 
+project.
+* Install the browserify package (http://browserify.org/)
+```
+    npm install --save browserify
+```
+* Create a javascript file - test.js and put the following
+content into it:
+```
+    console.log('hello');
+```
+* Of course if you have an index.html file that references test.js,
+you will have a 'hello' message printed on the console.
+* Edit the package.json file, find the "script" section and change it to
+```
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "browserify test.js -o bundle.js -d"
+  }
+```
+* If you run 'npm start', browserify will convert test.js to bundle.js
+
+## So what?
+
+We convert test.js to bundle.js, but what does that gain us?  No much at the moment.
+Let's say you have another javascript files - test2.js:
+```
+    console.log('goodbye');
+```
+If you need both test.js and test2.js in your index.html file, you will need to
+have 2 different script tags.  Or you can make the following change to test.js:
+```
+    require('./test2.js');
+    console.log('hello');
+```
+Take a look at bundle.js and noticed how code from both test.js and test2.js
+are included!  Now you can break up your long javascript file into multiple 
+smaller javascript files!
+
+## Javascript module system / CommonJS
+
+The topic of javascript's module system (or the lack of one) is too big
+to be discussed here.  However, I feel that it is important to at least 
+give a little background on this subject.
+
+Virtually all popular programming languages, with the exception of Javascript,
+comes with a module system.  A module system is simply a way to break down a 
+big program into a bunch of smaller files.
+
+Javascript had no way of doing this.  As a language tied to the browser, 
+the best way to break down a large Javascript program into multiple files
+was to have multiple script tags in the HTML file.
+
+Using mutiple script tags has many problems. For one, since the order in which 
+the script tag appears dictates the load order, we have to be very careful 
+when there are lots of javascript files to load.  Instead of specifying the 
+load order in the javascript file itself, we have to look at both the js 
+file and the html file, leading to a maintenance nightmare.
+
+Around 2009, as Javascript was becoming extremely popular because of the
+increase use of the WWW, programmers started to experiment running Javascript
+outsdie of the browser.  The result is a product called Node.js.
+
+Since Node.js runs javascript outside of the browser, it has no access to the 
+DOM.  Instead, node.js is intended to allow Javascript to create standalone 
+programs on servers and desktops.  As such, a proper module system is necessary.
+The creators of Node.js decided to use the 'require' keyword to allow importing
+of one javascript file into another.  They call this system CommonJS. 
+
+Browserify is basically a hack to allow CommonJS' require syntax to be used
+to combine multiple js files into one for the browser.
+
+## ES6 module system
+
+The current, most popular version of Javascript is called ES5 (you can read about 
+different javascript versions at https://en.wikipedia.org/wiki/ECMAScript).  The creators
+of Javascript have designed a proper module system for ES6, but is currently not
+fully implemented on popular browsers.
+
+An alternative to browserify called webpack (https://webpack.js.org/) can use both
+CommonJS and ES6 syntax to load modules, and offers more features than browserify.
+However, webpack has a steeper learning curve and deserves it's own tutorial, which
+is why I didn't use it here.
+
+# sass/css
+
+Now that our Javascript is taken care of, how is css managed in modern web development?
+While it is true that CSS is loaded the same way JS is loaded -- via tags in the html file.  
+Splitting a css file into multiple css files generally do not have the same issues as js files, 
+since css files are much more integrated into the html.
+
+The problem of CSS is different -- CSS eventually becomes extremely messy.  If you have written
+any css of significant size, you'll noticed that the same css code can appear in multiple places,
+making maintenance difficult.
+
+Let me give you an example:  let's say that you have decided to give a background color
+to multiple css classes:
+```
+.a { background-color: blue }
+.b { background-color: blue }
+```
+If you want to change this common background-color to red, you will need to make change in
+2 places.  CSS is full of issues like this which makes writing CSS for large sites very
+unenjoyable.  To combat this, the sass project (http://sass-lang.com/) is created.  Go and
+read the sass guide (http://sass-lang.com/guide) right now to get a feel of what sass can
+do for you.
+
+Basically, the idea is:
+
+* Write a .scss file, which allows lots of great syntax extensions to make writing css easier
+* Convert the .scss file into .css file
+* In the html file, link to the .css file produced from the previous step
+
+## node-sass
+
+The package to perform the conversion is called node-sass.  Let's setup a test
+project to play with it:
+
+```
+mkdir sass-test
+cd sass-test
+npm install --save node-sass
+```
+
+Now create subdirectory called sass and put the following test.scss file in there:
+
+```
+$bgcolor: blue;
+
+.a { background-color: $bgcolor }
+.b { background-color: $bgcolor }
+```
+
+Modify the package.json file:
+
+```
+"start": "node-sass --source-map true sass -o css"
+```
+
+Here we are asking node-sass to convert all .scss files in the sass/ sub-directory to 
+.css files and put them into the css/ sub-directory.
+
+Run 'npm start', you will see the test.css file being created in the css sub-directory.
+Take a look at the test.css to see the result.
+
+# Putting it all together
 
