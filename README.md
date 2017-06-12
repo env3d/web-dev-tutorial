@@ -34,9 +34,9 @@ writers, etc.).  Imagine if the pros email their code to each other, or put the 
 on a shared drive like dropbox or google drive.  How can we gaurantee that people are not 
 changing other people's code accidentially?
 
-Version control systems (aka [revision control system](https://en.wikipedia.org/wiki/Revision_Control_System) )
+Version control systems, aka [revision control system](https://en.wikipedia.org/wiki/Revision_Control_System),
 have been around for about 40 years and is designed to solve the exact issues mentioned
-above.  Arguably, the most popular version control system today is (git)[https://git-scm.com/].
+above.  Arguably, the most popular version control system today is [git](https://git-scm.com/).
 
 The basic idea is that you put your code on a shared server, but there are strict rules in 
 how each team member can make changes to the code on the server.  Also each change
@@ -48,7 +48,7 @@ If you read the previous paragraph, you'll notice that your code is stored on a
 server.  Well where can we find such a server that runs the git software so we
 can put our code?  If you work for a company with their own system administrator and
 hardware infrastructure, they probably have a server already setup.  For the rest of
-us, we can use free online git servers such as (github)[http://github.com].
+us, we can use free online git servers such as github - http://github.com.
 
 Feel free to google "github tutorials" to figure out some git basics.  Remember, git
 is the software and github is the online server that allow you to share your code
