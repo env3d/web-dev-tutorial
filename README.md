@@ -14,7 +14,7 @@ It is a case where the original technology's design was too simple, so we
 now need to employ a plethora of tools to make up for the missing
 functionalities.  This is the reason why these lessons are written.
 
-== source control / git ==
+# source control / git
 
 This first tool is not web specific.  Rather it is a tool that all coders will
 need to know.
@@ -34,9 +34,9 @@ writers, etc.).  Imagine if the pros email their code to each other, or put the 
 on a shared drive like dropbox or google drive.  How can we gaurantee that people are not 
 changing other people's code accidentially?
 
-Version control systems (aka [revision control system](https://en.wikipedia.org/wiki/Revision_Control_System)) 
+Version control systems (aka (revision control system)[https://en.wikipedia.org/wiki/Revision_Control_System]) 
 have been around for about 40 years and is designed to solve the exact issues mentioned
-above.  Arguably, the most popular version control system today is [git](https://git-scm.com/).
+above.  Arguably, the most popular version control system today is (git)[https://git-scm.com/].
 
 The basic idea is that you put your code on a shared server, but there are strict rules in 
 how each team member can make changes to the code on the server.  Also each change
@@ -56,8 +56,8 @@ with others.
 
 I found the following 2-part series pretty good for beginners:
 
-* (Part 1)[https://readwrite.com/2013/09/30/understanding-github-a-journey-for-beginners-part-1/]
-* (Part 2)[https://readwrite.com/2013/10/02/github-for-beginners-part-2/]
+* Part 1 - https://readwrite.com/2013/09/30/understanding-github-a-journey-for-beginners-part-1/
+* Part 2 - https://readwrite.com/2013/10/02/github-for-beginners-part-2/
 
 After understanding some git basics, try to:
 
@@ -70,7 +70,7 @@ After understanding some git basics, try to:
 * You can now use your browser and visit localhost:3000 to look at 
 your web application
 
-== npm / node.js ==
+# npm / node.js 
 
 A coder's job is to write awesome code to solve fun problems.  The problem is
 that there are lots of stuff that needs to get done just to get to the point 
@@ -92,7 +92,7 @@ chance of getting a piece of code that may not work the way we intend it
 to work.  We need a more organized way to share these kind of code with
 each other in the coding community.
 
-This is the purpose of (NPM)[https://www.npmjs.com/], or Node Package 
+This is the purpose of [NPM](https://www.npmjs.com/), or Node Package 
 Manager.  Using NPM, you can have access to almost half a million 
 resuable packages in an organized, structured way.  All modern frontend
 projects make use of NPM packages.
@@ -100,7 +100,7 @@ projects make use of NPM packages.
 Let's start learning about NPM by creating an NPM project and install
 one of my favorite package.
 
-=== lite-server ===
+## lite-server 
 
 Do the following:
 
